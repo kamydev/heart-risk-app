@@ -23,7 +23,7 @@ Designed to help at-risk individuals receive early warnings based on real-time h
 
 ## 🖼️ Screenshots
 
-> _You can add screenshots below or keep it text-only if not ready yet._
+> not ready yet._
 
 ---
 
