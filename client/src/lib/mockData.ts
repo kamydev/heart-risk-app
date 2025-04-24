@@ -108,7 +108,7 @@ export const userProfile = {
   name: "Karim Medouse",
   email: "karim.medouse@gmail.com",
   phone: "+213 662 45 32 89",
-  emergencyContact: "Yasser Medouse • +213 673 12 54 00",
+  emergencyContact: "Wassim Medouse • +213 673 12 54 00",
   memberSince: "Apr 2023",
   dateOfBirth: "24-Apr-1985",
   age: 40,
@@ -125,14 +125,14 @@ export const userProfile = {
 export const emergencyContacts = [
   {
     id: 1,
-    name: "Yasser Medouse",
+    name: "Yasser Babaouamer",
     relationship: "Brother",
     phone: "+213 673 12 54 00",
     icon: "User"
   },
   {
     id: 2,
-    name: "Mohamed Bekkai",
+    name: "Mohamed Mahi",
     relationship: "Friend",
     phone: "+213 661 88 93 22",
     icon: "User"
@@ -145,7 +145,7 @@ export const defaultSettings = {
   smsAlerts: true,
   dailySummary: false,
   smartwatchConnected: true,
-  smartwatchModel: "Apple Watch Series 7",
+  smartwatchModel: "HeartGuard Watch",
   syncFrequency: "15", // in minutes
   batteryOptimization: false,
   autoEmergencyCalls: false
