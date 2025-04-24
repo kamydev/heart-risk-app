@@ -33,12 +33,20 @@ const Dashboard = () => {
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Heart Risk Dashboard</h1>
         <div className="flex items-center space-x-2 text-sm text-gray-600">
-          <span>Last updated: 15 minutes ago</span>
-          <span className="flex items-center text-[#4ade80]">
+          <span>Last Smartwatch Sync: 24-Apr-2025</span>
+          <span className="flex items-center text-[#22c55e]">
             <CheckCircle className="mr-1 h-4 w-4" />
-            <span>Watch synced</span>
+            <span>Smartwatch connected</span>
           </span>
         </div>
+      </div>
+      
+      {/* Smartwatch sync banner */}
+      <div className="bg-[#22c55e] bg-opacity-10 border border-[#22c55e] border-opacity-20 rounded-lg p-3 text-center">
+        <p className="text-sm text-gray-800 flex items-center justify-center">
+          <CheckCircle className="mr-2 h-4 w-4 text-[#22c55e]" />
+          Data synced from connected smartwatch device.
+        </p>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -93,6 +101,9 @@ const Dashboard = () => {
                   />
                 </LineChart>
               </ResponsiveContainer>
+            </div>
+            <div className="text-sm text-gray-600 mt-4 text-center">
+              Last Smartwatch Sync: 24-Apr-2025
             </div>
           </CardContent>
         </Card>

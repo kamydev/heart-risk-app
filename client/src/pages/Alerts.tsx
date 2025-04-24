@@ -1,57 +1,41 @@
-import { AlertTriangle, HeartPulse, Droplet, RotateCw, CheckCircle, Filter } from "lucide-react";
+import React from "react";
+import { AlertTriangle, HeartPulse, Droplet, RotateCw, CheckCircle, Filter, Watch, User, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { alerts as alertsData, emergencyContacts, highRiskAlert as highRiskAlertData } from "@/lib/mockData";
 
-// Alerts data
-const alerts = [
-  {
-    id: 1,
-    type: "warning",
-    title: "Elevated Heart Rate Detected",
-    description: "Heart rate reached 115 BPM during resting period.",
-    timestamp: "Yesterday, 8:45 PM",
-    icon: <HeartPulse className="text-[#facc15]" />,
-    bgColor: "bg-[#facc15] bg-opacity-20",
-  },
-  {
-    id: 2,
-    type: "info",
-    title: "Blood Pressure Fluctuation",
-    description: "Your blood pressure showed significant variation over the last 24 hours.",
-    timestamp: "Yesterday, 3:20 PM",
-    icon: <Droplet className="text-blue-500" />,
-    bgColor: "bg-blue-100",
-  },
-  {
-    id: 3,
-    type: "neutral",
-    title: "Watch Disconnected",
-    description: "Your smartwatch was disconnected for more than 2 hours.",
-    timestamp: "February 4, 9:15 AM",
-    icon: <RotateCw className="text-gray-500" />,
-    bgColor: "bg-gray-100",
-  },
-  {
-    id: 4,
-    type: "success",
-    title: "Risk Score Improved",
-    description: "Your heart risk score decreased from 58% to 42% over the past week.",
-    timestamp: "February 3, 4:30 PM",
-    icon: <CheckCircle className="text-[#4ade80]" />,
-    bgColor: "bg-[#4ade80] bg-opacity-20",
+// Mock alerts with JSX icons
+const alertsWithIcons = alertsData.map(alert => {
+  let icon;
+  
+  switch(alert.type) {
+    case "warning":
+      icon = <HeartPulse className="text-[#facc15]" />;
+      break;
+    case "info":
+      icon = <Droplet className="text-blue-500" />;
+      break;
+    case "neutral":
+      icon = <RotateCw className="text-gray-500" />;
+      break;
+    case "success":
+      icon = <CheckCircle className="text-[#22c55e]" />;
+      break;
+    default:
+      icon = <AlertTriangle className="text-[#ef4444]" />;
   }
-];
+  
+  return {
+    ...alert,
+    icon
+  };
+});
 
-// Critical high risk alert
+// Critical high risk alert with JSX
 const highRiskAlert = {
-  id: 0,
-  type: "danger",
-  title: "High Risk Alert",
-  description: "Sustained elevated heart rate and blood pressure detected.",
-  timestamp: "Today, 10:33 AM",
-  icon: <AlertTriangle className="text-[#ef4444] text-xl" />,
-  bgColor: "bg-[#ef4444] bg-opacity-20",
+  ...highRiskAlertData,
+  icon: <AlertTriangle className="text-[#ef4444] text-xl" />
 };
 
 const Alerts = () => {
@@ -87,6 +71,38 @@ const Alerts = () => {
         </div>
       </div>
       
+      {/* Emergency Contacts */}
+      <Card className="bg-white rounded-2xl shadow-md">
+        <div className="p-6 border-b border-gray-100">
+          <h2 className="text-lg font-semibold">Emergency Contacts</h2>
+        </div>
+        
+        <CardContent className="p-0">
+          <div className="divide-y divide-gray-100">
+            {emergencyContacts.map((contact) => (
+              <div key={contact.id} className="p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="bg-gray-100 rounded-full p-3">
+                      <User className="text-gray-500 h-5 w-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-medium">{contact.name}</h3>
+                      <p className="text-gray-600 text-sm">{contact.relationship}</p>
+                    </div>
+                  </div>
+                  <Button variant="outline" className="flex items-center">
+                    <Phone className="mr-2 h-4 w-4 text-[#22c55e]" />
+                    <span className="hidden md:inline">Call</span>
+                  </Button>
+                </div>
+                <p className="text-sm text-gray-600 mt-2 ml-14">{contact.phone}</p>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+      
       {/* Alert List */}
       <Card className="bg-white rounded-2xl shadow-md">
         <div className="p-6 border-b border-gray-100">
@@ -95,7 +111,7 @@ const Alerts = () => {
         
         <CardContent className="p-0">
           <div className="divide-y divide-gray-100">
-            {alerts.map((alert) => (
+            {alertsWithIcons.map((alert) => (
               <div key={alert.id} className="p-6">
                 <div className="flex items-start space-x-4">
                   <div className={`${alert.bgColor} rounded-full p-3`}>
@@ -112,6 +128,14 @@ const Alerts = () => {
           </div>
         </CardContent>
       </Card>
+      
+      {/* Latest Smartwatch Information */}
+      <div className="bg-[#22c55e] bg-opacity-10 border border-[#22c55e] border-opacity-20 rounded-lg p-4 text-center">
+        <p className="text-sm text-gray-800 flex items-center justify-center">
+          <Watch className="mr-2 h-4 w-4 text-[#22c55e]" />
+          Data synced from connected smartwatch device. Last sync: 24-Apr-2025
+        </p>
+      </div>
     </div>
   );
 };

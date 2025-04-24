@@ -4,7 +4,7 @@
 // Risk score data
 export const riskScore = {
   value: 62,
-  lastUpdated: "15 minutes ago",
+  lastUpdated: "24-Apr-2025",
   watchSynced: true
 };
 
@@ -59,7 +59,7 @@ export const alerts = [
     type: "warning",
     title: "Elevated Heart Rate Detected",
     description: "Heart rate reached 115 BPM during resting period.",
-    timestamp: "Yesterday, 8:45 PM",
+    timestamp: "24-Apr-2025 09:15 AM",
     icon: "HeartPulse",
     bgColor: "bg-[#facc15] bg-opacity-20",
   },
@@ -105,34 +105,37 @@ export const highRiskAlert = {
 
 // User profile data
 export const userProfile = {
-  name: "John Doe",
-  email: "john.doe@example.com",
-  phone: "+1 (555) 123-4567",
-  emergencyContact: "Jane Doe • +1 (555) 987-6543",
-  memberSince: "Jan 2023",
-  age: 52,
+  name: "Karim Medouse",
+  email: "karim.medouse@gmail.com",
+  phone: "+213 662 45 32 89",
+  emergencyContact: "Yasser Medouse • +213 673 12 54 00",
+  memberSince: "Apr 2023",
+  dateOfBirth: "24-Apr-1985",
+  age: 40,
   gender: "Male",
-  height: "5'10\" (178 cm)",
-  weight: "180 lbs (82 kg)",
-  medicalConditions: ["Hypertension", "Type 2 Diabetes"],
-  medications: "Lisinopril (10mg, daily)\nMetformin (500mg, twice daily)",
+  height: "180 cm",
+  weight: "82 kg",
+  medicalConditions: ["Hypertension", "Smoker"],
+  medications: "Lisinopril (10mg, daily)",
+  profilePicture: "https://randomuser.me/api/portraits/men/75.jpg",
+  watchConnectionStatus: "Active"
 };
 
 // Emergency contacts
 export const emergencyContacts = [
   {
     id: 1,
-    name: "Jane Doe",
-    relationship: "Spouse",
-    phone: "+1 (555) 987-6543",
+    name: "Yasser Medouse",
+    relationship: "Brother",
+    phone: "+213 673 12 54 00",
     icon: "User"
   },
   {
     id: 2,
-    name: "Dr. Smith",
-    relationship: "Cardiologist",
-    phone: "+1 (555) 456-7890",
-    icon: "Stethoscope"
+    name: "Mohamed Bekkai",
+    relationship: "Friend",
+    phone: "+213 661 88 93 22",
+    icon: "User"
   }
 ];
 

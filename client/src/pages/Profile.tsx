@@ -1,25 +1,11 @@
 import { useState } from "react";
-import { CheckCircle, X, Plus, User } from "lucide-react";
+import { CheckCircle, X, Plus, User, Watch } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-
-// Mock user profile data
-const userProfile = {
-  name: "John Doe",
-  email: "john.doe@example.com",
-  phone: "+1 (555) 123-4567",
-  emergencyContact: "Jane Doe • +1 (555) 987-6543",
-  memberSince: "Jan 2023",
-  age: 52,
-  gender: "Male",
-  height: "5'10\" (178 cm)",
-  weight: "180 lbs (82 kg)",
-  medicalConditions: ["Hypertension", "Type 2 Diabetes"],
-  medications: "Lisinopril (10mg, daily)\nMetformin (500mg, twice daily)",
-};
+import { userProfile } from "@/lib/mockData";
 
 const Profile = () => {
   const [conditions, setConditions] = useState(userProfile.medicalConditions);
@@ -44,11 +30,19 @@ const Profile = () => {
         <Card className="bg-white rounded-2xl shadow-md md:col-span-1">
           <CardContent className="p-6">
             <div className="flex flex-col items-center">
-              <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
-                <User className="text-gray-400 h-12 w-12" />
+              <div className="w-24 h-24 rounded-full overflow-hidden mb-4">
+                <img 
+                  src={userProfile.profilePicture} 
+                  alt={userProfile.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h2 className="text-xl font-semibold">{userProfile.name}</h2>
               <p className="text-gray-600">Member since {userProfile.memberSince}</p>
+              <div className="flex items-center text-[#22c55e] text-sm mt-2">
+                <Watch className="h-4 w-4 mr-1" />
+                <span>Smartwatch: {userProfile.watchConnectionStatus}</span>
+              </div>
               
               <Button variant="outline" className="mt-4 text-sm">
                 Change profile picture
@@ -80,10 +74,10 @@ const Profile = () => {
             <form>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-gray-600 text-sm mb-2">Age</label>
+                  <label className="block text-gray-600 text-sm mb-2">Date of Birth</label>
                   <Input
-                    type="number"
-                    defaultValue={userProfile.age}
+                    type="text"
+                    defaultValue={userProfile.dateOfBirth}
                     className="w-full focus:ring-2 focus:ring-red-300 focus:border-red-300"
                   />
                 </div>
